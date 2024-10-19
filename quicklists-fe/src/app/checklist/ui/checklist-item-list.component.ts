@@ -13,7 +13,7 @@ import {ChecklistItem, EditChecklistItem} from "../../shared/interface/checklist
               @if (item.checked) {
                 <span>✅</span>
               }
-              {{ item.title  }}
+              {{ item.title }}
             </div>
             <div>
               <button
