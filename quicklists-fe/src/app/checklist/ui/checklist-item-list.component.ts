@@ -17,7 +17,7 @@ import {ChecklistItem, EditChecklistItem} from "../../shared/interface/checklist
             </div>
             <div>
               <button
-                (click)="toggle.emit(item)"
+                (click)="toggle.emit({ id: item.id, data: { checked: !item.checked } })"
                 data-testid="toggle-checklist-item-button"
               >
                 Toggle
@@ -73,5 +73,5 @@ export class ChecklistItemListComponent {
   checklistItems = input.required<ChecklistItem[]>();
   delete = output<string>();
   edit = output<ChecklistItem>();
-  toggle = output<ChecklistItem>();
+  toggle = output<EditChecklistItem>();
 }
