@@ -7,21 +7,16 @@ import {Checklist} from "../../shared/interface/checklist";
   selector: 'app-checklist-header',
   template: `
     <header>
-      <a data-testid="back-button" routerLink="/home">Back</a>
-      <h1 data-testid="checklist-title">
+      <a routerLink="/home">Back</a>
+      <h1>
         {{ checklist().title }}
       </h1>
       <div>
-        <button
-          (click)="resetChecklist.emit(checklist().id)"
-          data-testid="reset-items-button"
-        >
+        <button (click)="resetChecklist.emit(checklist().id)">
           Reset
         </button>
         <button
-          (click)="addItem.emit()"
-          data-testid="create-checklist-item-button"
-        >
+          (click)="addItem.emit()">
           Add item
         </button>
       </div>

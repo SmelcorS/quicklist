@@ -22,7 +22,7 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
             />
           </div>
         }
-        <button type="submit" data-testid="save-checklist-button">Save</button>
+        <button type="submit">Save</button>
       </form>
     </section>
   `,

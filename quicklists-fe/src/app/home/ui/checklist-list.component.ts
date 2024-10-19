@@ -8,27 +8,21 @@ import {Checklist} from "../../shared/interface/checklist";
   template: `
     <ul>
       @for (checklist of checklists(); track checklist.id) {
-        <li data-testid="checklist-item">
-          <a
-            routerLink="/checklist/{{ checklist.id }}"
-            data-testid="checklist-link"
-          >
+        <li>
+          <a routerLink="/checklist/{{ checklist.id }}">
             {{ checklist.title }}
           </a>
           <div>
-            <button (click)="edit.emit(checklist)" data-testid="edit-checklist">
+            <button (click)="edit.emit(checklist)">
               Edit
             </button>
-            <button
-              (click)="delete.emit(checklist.id)"
-              data-testid="delete-checklist"
-            >
+            <button (click)="delete.emit(checklist.id)">
               Delete
             </button>
           </div>
         </li>
       } @empty {
-        <p data-testid="no-checklists-message">
+        <p>
           Click the add button to create your first checklist!
         </p>
       }

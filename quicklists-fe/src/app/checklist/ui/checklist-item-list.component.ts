@@ -8,30 +8,22 @@ import {ChecklistItem, EditChecklistItem} from "../../shared/interface/checklist
     <section>
       <ul>
         @for (item of checklistItems(); track item.id) {
-          <li data-testid="checklist-item">
+          <li>
             <div>
               @if (item.checked) {
-                <span data-testid="checked-indicator">✅</span>
+                <span>✅</span>
               }
               {{ item.title }}
             </div>
             <div>
               <button
-                (click)="toggle.emit({ id: item.id, data: { checked: !item.checked } })"
-                data-testid="toggle-checklist-item-button"
-              >
+                (click)="toggle.emit({ id: item.id, data: { checked: !item.checked } })">
                 Toggle
               </button>
-              <button
-                (click)="edit.emit(item)"
-                data-testid="edit-checklist-item-button"
-              >
+              <button (click)="edit.emit(item)">
                 Edit
               </button>
-              <button
-                (click)="delete.emit(item.id)"
-                data-testid="delete-checklist-item-button"
-              >
+              <button (click)="delete.emit(item.id)">
                 Delete
               </button>
             </div>
@@ -39,7 +31,7 @@ import {ChecklistItem, EditChecklistItem} from "../../shared/interface/checklist
         } @empty {
           <div>
             <h2>Add an item</h2>
-            <p data-testid="no-checklist-items-message">
+            <p>
               Click the add button to add your first item to this quicklist
             </p>
           </div>

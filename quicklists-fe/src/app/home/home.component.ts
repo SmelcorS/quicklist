@@ -60,6 +60,7 @@ export default class HomeComponent {
   });
 
   constructor() {
+    //The declarative approach here will be too complicated. Simple effect would be better
     effect(() => {
       const checklist = this.checklistBeingEdited();
 
