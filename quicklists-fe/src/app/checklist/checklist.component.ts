@@ -3,7 +3,6 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ChecklistHeaderComponent } from './ui/checklist-header.component';
 import { ChecklistService } from '../shared/data-access/checklist.service';
 import { ActivatedRoute } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { ChecklistItemListComponent } from './ui/checklist-item-list.component';
 import { ModalComponent } from '../shared/ui/modal.component';
 import { FormBuilder } from '@angular/forms';
@@ -52,7 +51,6 @@ import {ChecklistItem} from "../shared/interface/checklist-item";
     </app-modal>
   `,
   imports: [
-    CommonModule,
     ChecklistHeaderComponent,
     ChecklistItemListComponent,
     ModalComponent,

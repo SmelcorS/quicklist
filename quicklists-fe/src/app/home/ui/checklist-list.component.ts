@@ -1,6 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, input, output } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import {Checklist} from "../../shared/interface/checklist";
 
 @Component({
@@ -8,7 +7,7 @@ import {Checklist} from "../../shared/interface/checklist";
   selector: 'app-checklist-list',
   template: `
     <ul>
-      @for (checklist of checklists; track checklist.id){
+      @for (checklist of checklists(); track checklist.id) {
         <li data-testid="checklist-item">
           <a
             routerLink="/checklist/{{ checklist.id }}"
@@ -56,10 +55,10 @@ import {Checklist} from "../../shared/interface/checklist";
       }
     `,
   ],
-  imports: [CommonModule, RouterModule],
+  imports: [RouterLink],
 })
 export class ChecklistListComponent {
-  @Input({ required: true }) checklists!: Checklist[];
-  @Output() delete = new EventEmitter<string>();
-  @Output() edit = new EventEmitter<Checklist>();
+  checklists = input.required<Checklist[]>();
+  delete = output<string>();
+  edit = output<Checklist>();
 }

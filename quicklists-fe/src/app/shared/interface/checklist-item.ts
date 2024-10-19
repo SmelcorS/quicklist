@@ -13,6 +13,6 @@ export type AddChecklistItem = {
 };
 export type EditChecklistItem = {
   id: ChecklistItem['id'];
-  data: { title?: string; checked?: boolean };
+  data: AddChecklistItem['item'];
 };
 export type RemoveChecklistItem = ChecklistItem['id'];

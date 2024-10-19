@@ -1,5 +1,4 @@
-import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import {ChecklistItem, EditChecklistItem} from "../../shared/interface/checklist-item";
 
 @Component({
@@ -8,7 +7,7 @@ import {ChecklistItem, EditChecklistItem} from "../../shared/interface/checklist
   template: `
     <section>
       <ul>
-        @for (item of checklistItems; track item.id) {
+        @for (item of checklistItems(); track item.id) {
           <li data-testid="checklist-item">
             <div>
               @if (item.checked) {
@@ -18,9 +17,7 @@ import {ChecklistItem, EditChecklistItem} from "../../shared/interface/checklist
             </div>
             <div>
               <button
-                (click)="
-                  toggle.emit({ id: item.id, data: { checked: !item.checked } })
-                "
+                (click)="toggle.emit(item)"
                 data-testid="toggle-checklist-item-button"
               >
                 Toggle
@@ -71,11 +68,10 @@ import {ChecklistItem, EditChecklistItem} from "../../shared/interface/checklist
       }
     `,
   ],
-  imports: [CommonModule],
 })
 export class ChecklistItemListComponent {
-  @Input({ required: true }) checklistItems!: ChecklistItem[];
-  @Output() delete = new EventEmitter<string>();
-  @Output() edit = new EventEmitter<ChecklistItem>();
-  @Output() toggle = new EventEmitter<EditChecklistItem>();
+  checklistItems = input.required<ChecklistItem[]>();
+  delete = output<string>();
+  edit = output<ChecklistItem>();
+  toggle = output<ChecklistItem>();
 }
